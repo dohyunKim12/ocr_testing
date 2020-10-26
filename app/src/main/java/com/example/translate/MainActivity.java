@@ -61,26 +61,31 @@ public class MainActivity extends AppCompatActivity {
                 new BackgroundTask().execute();
             }
         });
+        Log.e("error", "error1");
         // 뷰 선언
         mBtnCameraView = (Button) findViewById(R.id.btn_camera);
         mEditOcrResult = (EditText) findViewById(R.id.edit_ocrresult);
         sTess = new TessBaseAPI();
-
+        Log.e("error", "error2");
 
         // Tesseract 인식 언어를 한국어로 설정 및 초기화
         lang = "kor";
         datapath = getFilesDir()+ "/tesseract";
+        Log.e("error", "errortess");
 
         if(checkFile(new File(datapath+"/tessdata")))
         {
+            Log.e("error", "errortessif");
             sTess.init(datapath, lang);
+            Log.e("error", "errortessifpost");
         }
 
+        Log.e("error", "error3");
         mBtnCameraView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
+                Log.e("error", "error4");
                 // 버튼 클릭 시
 
                 // Camera 화면 띄우기
@@ -90,8 +95,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     boolean checkFile(File dir)
     {
+        Log.e("error", "error5");
         //디렉토리가 없으면 디렉토리를 만들고 그후에 파일을 카피
         if(!dir.exists() && dir.mkdirs()) {
             copyFiles();
@@ -109,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
     void copyFiles()
     {
+        Log.e("error", "error6");
         AssetManager assetMgr = this.getAssets();
 
         InputStream is = null;
@@ -139,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.e("error", "error7");
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK)
         {
@@ -155,11 +164,13 @@ public class MainActivity extends AppCompatActivity {
     class BackgroundTask extends AsyncTask<Integer, Integer, Integer>{
         @Override
         protected void onPreExecute() {
+            Log.e("error", "error8");
             super.onPreExecute();
         }
 
         @Override
         protected Integer doInBackground(Integer... integers) {
+            Log.e("error", "error9");
 
             StringBuilder output = new StringBuilder();
             String clientId = "rLN7Ft6XFCUvefzEzflo";
@@ -216,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Integer integer) {
+            Log.e("error", "error10");
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
 

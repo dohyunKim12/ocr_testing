@@ -14,10 +14,11 @@
         />
 
     <!--ROI 영역-->
+
     <SurfaceView
         android:id="@+id/surface_roi_border"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="301dp"
+        android:layout_height="178dp"
         android:background="#00ff00" />
 
     <SurfaceView
